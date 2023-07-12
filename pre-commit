@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Prevent commits to branches "main", "master" & "develop".
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+case "$branch" in
+	"main"|"master"|"develop")
+		echo "Cannot commit to the $branch branch"
+		exit 1
+	;;
+esac
